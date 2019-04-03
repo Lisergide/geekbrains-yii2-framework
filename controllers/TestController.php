@@ -22,4 +22,8 @@ class TestController extends Controller {
     }
   }
 
+  public function actionIndex() {
+    return $this->renderContent('Этот текст выведен из метода actionIndex, контроллера Test.');
+  }
+
 }
