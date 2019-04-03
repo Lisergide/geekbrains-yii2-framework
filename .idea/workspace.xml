@@ -2,115 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="82b829a2-7f89-4126-a52e-d633007b6b71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/controllers/CountryController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/controllers/TestController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/controllers/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/models/Country.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/models/CountrySearch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/models/EntryForm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/models/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/_form.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/_search.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/country/view.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/test/entry-confirm.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/test/entry.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/views/test/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2-app-basic/yii2basic.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.bowerrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vagrantfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/AppAsset.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/codeception.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/HelloController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/console.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/params.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/test_db.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/CountryController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SiteController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/TestController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/UserController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail/layouts/html.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ContactForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Country.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/CountrySearch.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/EntryForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/LoginForm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Product.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/User.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/runtime/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_data/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_output/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/AcceptanceTester.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/FunctionalTester.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/_support/UnitTester.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance.suite.yml.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/AboutCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/ContactCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/HomeCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/LoginCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/acceptance/_bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/yii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/bin/yii.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional.suite.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional/ContactFormCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional/LoginFormCest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/functional/_bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit.suite.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/_bootstrap.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/ContactFormTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/LoginFormTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/models/UserTest.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/config/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/config/vagrant-local.example.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/nginx/app.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/nginx/log/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/provision/always-as-root.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/provision/once-as-root.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vagrant/provision/once-as-vagrant.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/_form.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/_search.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/create.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/update.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/country/view.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/about.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/contact.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/error.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/say.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/test/entry-confirm.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/test/entry.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/test/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/.htaccess" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/assets/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index-test.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/robots.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/widgets/Alert.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2-app-basic/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2-app-basic/config/db.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/config/db.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2-app-basic/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2-app-basic/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2basic.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2-app-basic" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,45 +14,11 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yii2-app-basic/controllers/TestController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="15" column="36" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
-              <folding>
-                <element signature="e#35#58#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/yii2-app-basic/views/test/entry.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-              <folding>
-                <element signature="e#6#27#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/yii2-app-basic/views/site/contact.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/yii2-app-basic" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -197,11 +55,6 @@
             <path>
               <item name="geekbrains-yii2-framework" type="b2602c69:ProjectViewProjectNode" />
               <item name="geekbrains-yii2-framework" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="geekbrains-yii2-framework" type="b2602c69:ProjectViewProjectNode" />
-              <item name="geekbrains-yii2-framework" type="462c0819:PsiDirectoryNode" />
-              <item name="yii2-app-basic" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -254,12 +107,12 @@
       <option name="presentableId" value="Default" />
       <updated>1554323864230</updated>
       <workItem from="1554323865396" duration="19000" />
-      <workItem from="1554325624736" duration="4504000" />
+      <workItem from="1554325624736" duration="4777000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4523000" />
+    <option name="totallyTimeSpent" value="4796000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
