@@ -1,10 +1,13 @@
 <?php
 
+use app\components\TestService;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
 $config = [
     'id' => 'basic',
+    'language' => 'ru',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'aliases' => [
@@ -50,25 +53,32 @@ $config = [
             'rules' => [
             ],
         ],
+        // Настроить в web.php компонент test с ключом class равным \app\components\TestService::class,
+        // Задать в описании компонента test (web.php) другое значение для его свойстваи убедиться, что во вьюхе теперь выводится оно.
+        'test' => [
+            'class' => TestService::class,
+            'prop' => 'Задаем свой props в описании компонента test, которое выводится во views.',
+            ],
 
     ],
     'params' => $params,
 ];
 
+// в web.php сделать доступ к GII и Debug вставив свой локальный айпишник (127.0.0.1) или '*'.
 if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
         'class' => 'yii\debug\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 
     $config['bootstrap'][] = 'gii';
     $config['modules']['gii'] = [
         'class' => 'yii\gii\Module',
         // uncomment the following to add your IP if you are not connecting from localhost.
-        //'allowedIPs' => ['127.0.0.1', '::1'],
+        'allowedIPs' => ['*'],
     ];
 }
 

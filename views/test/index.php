@@ -1,7 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
-/* @var $product \app\models\Product */
+/* @var $service \app\components\TestService */
 
 use yii\helpers\Html;
 
@@ -20,8 +20,8 @@ $this->params['breadcrumbs'][] = $this->title;
         iure nam officia officiis quia, quisquam repellat? Commodi consequatur deserunt dignissimos quam sapiente
         voluptas voluptate.
     </p>
-    <h3><?php echo $product->name?></h3>
 
-    <?=  \yii\widgets\DetailView::widget(['model' => $product])?>
+    <h3><?php echo $service ?></h3>
+
 </div>
 
