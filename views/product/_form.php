@@ -11,8 +11,8 @@ use yii\widgets\ActiveForm;
 <div class="product-form">
 
     <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
+<!-- Изменить в форме модели Product тип поля для атрибута name - сделать в виде выпадаюшего списка -->
+    <?= $form->field($model, 'name')->dropDownList(['111' => 'Первый', '222' => 'Второй', '333' => 'Третий']) ?>
 
     <?= $form->field($model, 'price')->textInput(['maxlength' => true]) ?>
 
