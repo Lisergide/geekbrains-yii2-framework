@@ -14,6 +14,7 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
     const SCENARIO_UPDATE = 'update';
 
     /**
@@ -33,7 +34,7 @@ class Product extends \yii\db\ActiveRecord
      * Для выполнения дальнейших заданий, закомментируем данный метод
      */
     // Создать в Product метод scenarios() указав, что для сценария по умолчанию активный атрибут только name
-    public function scenarios() {
+    /*public function scenarios() {
         return [
 //          self::SCENARIO_DEFAULT => ['name']
 
@@ -42,7 +43,7 @@ class Product extends \yii\db\ActiveRecord
           self::SCENARIO_UPDATE => ['price', 'created_at']
 
         ];
-    }
+    }*/
 
 
     /**
@@ -62,8 +63,8 @@ class Product extends \yii\db\ActiveRecord
                     return trim(strip_tags($value));
             }],
             // price - только целые числа больше 0 и меньше 1000
-            [['price'], 'integer', 'min' => 0, 'max' => 1000, 'on' => 'create'],
-            [['price'], 'integer', 'min' => 1000, 'max' => 2000, 'on' => 'update'],
+            [['price'], 'integer', 'min' => 1, 'max' => 999, 'on' => 'create'],
+            [['price'], 'integer', 'min' => 1000, 'max' => 1999, 'on' => 'update'],
 
         ];
     }

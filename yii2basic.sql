@@ -41,6 +41,22 @@ INSERT INTO `country` (`code`, `name`, `population`) VALUES
 	('US', 'United States', 322976000);
 /*!40000 ALTER TABLE `country` ENABLE KEYS */;
 
+-- Дамп структуры для таблица yii2basic.migration
+CREATE TABLE IF NOT EXISTS `migration` (
+  `version` varchar(180) NOT NULL,
+  `apply_time` int(11) DEFAULT NULL,
+  PRIMARY KEY (`version`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Дамп данных таблицы yii2basic.migration: ~4 rows (приблизительно)
+/*!40000 ALTER TABLE `migration` DISABLE KEYS */;
+INSERT INTO `migration` (`version`, `apply_time`) VALUES
+	('m000000_000000_base', 1555260969),
+	('m190414_163109_migrate_user', 1555270819),
+	('m190414_175621_migrate_task', 1555270819),
+	('m190414_181737_migrate_task_user', 1555270819);
+/*!40000 ALTER TABLE `migration` ENABLE KEYS */;
+
 -- Дамп структуры для таблица yii2basic.product
 CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -50,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Дамп данных таблицы yii2basic.product: ~10 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.product: ~9 rows (приблизительно)
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
 INSERT INTO `product` (`id`, `name`, `price`, `created_at`) VALUES
 	(1, 'TSP FASTY', '5040', '2019-04-05'),
@@ -65,6 +81,61 @@ INSERT INTO `product` (`id`, `name`, `price`, `created_at`) VALUES
 	(12, '333', '340', '2019-04-12'),
 	(13, '222', '1652', '2019-04-14');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
+
+-- Дамп структуры для таблица yii2basic.task
+CREATE TABLE IF NOT EXISTS `task` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` text NOT NULL,
+  `creator_id` int(11) NOT NULL,
+  `updater_id` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+
+-- Дамп данных таблицы yii2basic.task: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `task` DISABLE KEYS */;
+INSERT INTO `task` (`id`, `title`, `description`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
+	(1, 'Title_1', 'Description_1', 1, NULL, 1555271689, NULL),
+	(2, 'Title_2', 'Description_2', 2, NULL, 1555271689, NULL),
+	(3, 'Title_3', 'Description_3', 3, NULL, 1555271689, NULL);
+/*!40000 ALTER TABLE `task` ENABLE KEYS */;
+
+-- Дамп структуры для таблица yii2basic.task_user
+CREATE TABLE IF NOT EXISTS `task_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `task_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Дамп данных таблицы yii2basic.task_user: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `task_user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `task_user` ENABLE KEYS */;
+
+-- Дамп структуры для таблица yii2basic.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
+  `password_hash` varchar(255) NOT NULL,
+  `auth_key` varchar(255) DEFAULT NULL,
+  `creator_id` int(11) NOT NULL,
+  `updater_id` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `updated_at` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+
+-- Дамп данных таблицы yii2basic.user: ~0 rows (приблизительно)
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` (`id`, `username`, `password_hash`, `auth_key`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
+	(1, 'admin', 'admin', '', 1, NULL, 1555271689, 1555271689),
+	(2, 'demo', 'demo', '', 2, NULL, 1555358089, NULL),
+	(3, 'adam', 'adam', '', 3, NULL, 1555444489, NULL),
+	(4, 'eva', 'eva', '', 4, NULL, 1555444489, NULL),
+	(5, 'john', 'john', '', 5, NULL, 1555530889, NULL);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

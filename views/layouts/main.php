@@ -42,6 +42,8 @@ AppAsset::register($this);
             ['label' => 'About', 'url' => ['/site/about']],
             ['label' => 'Contact', 'url' => ['/site/contact']],
             ['label' => 'Test', 'url' => ['/test/index']],
+            ['label' => 'Insert', 'url' => ['/test/insert']],
+            ['label' => 'Select', 'url' => ['/test/select']],
             ['label' => 'Form', 'url' => ['/test/entry']],
             ['label' => 'Country', 'url' => ['/country/index']],
             ['label' => 'Product', 'url' => ['/product/index']],
