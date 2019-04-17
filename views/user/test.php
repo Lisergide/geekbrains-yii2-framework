@@ -5,12 +5,13 @@ use yii\web\View;
 
 /* @var $this yii\web\View */
 
-$this->title = 'Select';
+$this->title = 'UserTest';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="select-index">
+    <div class="userTest-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+        <h1><?= Html::encode($this->title) ?></h1>
 
-</div>
+    </div>
+<?php

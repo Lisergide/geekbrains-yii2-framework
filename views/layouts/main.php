@@ -46,7 +46,10 @@ AppAsset::register($this);
             ['label' => 'Select', 'url' => ['/test/select']],
             ['label' => 'Form', 'url' => ['/test/entry']],
             ['label' => 'Country', 'url' => ['/country/index']],
-            ['label' => 'Product', 'url' => ['/product/index']],
+            ['label' => 'User', 'url' => ['/user/index']],
+            ['label' => 'UserTest', 'url' => ['/user/test']],
+            ['label' => 'Task', 'url' => ['/task/index']],
+            ['label' => 'TaskUser', 'url' => ['/task-user/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
