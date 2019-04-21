@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\components\TestService;
 use app\models\Product;
+use app\models\Task;
 use Yii;
 use yii\db\Query;
 use yii\web\Controller;
@@ -23,6 +24,14 @@ class TestController extends Controller {
 //        $product->name = 'BMW';
 //        $product->category = 'auto';
 //        $product->price = 200000;
+
+        $task = new Task();
+        $task->description = 'Description_7';
+        $task->title = 'Title_7';
+        $task->creator_id = 1;
+        $task->save();
+
+        _end($task);
 
         return $this->render('index', [
 //            'product' => $product,

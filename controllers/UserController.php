@@ -6,7 +6,9 @@ use Yii;
 use app\models\User;
 use app\models\Task;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -19,6 +21,17 @@ class UserController extends Controller {
      */
     public function behaviors() {
         return [
+            // 8) Ограничить с помощью AccessControl доступ только для авторизованных пользователей ко всем трем
+            // созданным в прошлом ДЗ контроллерам.
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -131,6 +144,9 @@ class UserController extends Controller {
      * @return mixed
      */
     public function actionCreate() {
+        if (Yii::$app->user->id != User::ADMIN_ID) {
+            throw new ForbiddenHttpException('Только админ!');
+        }
         $model = new User();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

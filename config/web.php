@@ -23,7 +23,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\UserBase',
+            'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -43,6 +43,14 @@ $config = [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                // 9) Создать в конфиге у компонента log дополнительную цель (target) для записи в лог факта авторизации
+                // пользователя. Уровень (level) сделать info, категорию и файл назвать, например login.
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['login'],
+                    'logFile' => '@runtime/logs/login.log'
+                ]
             ],
         ],
         'db' => $db,
