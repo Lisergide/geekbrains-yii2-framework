@@ -1,4 +1,8 @@
 <?php
+
+/* @var $this yii\web\View */
+/* @var $model app\models\EntryForm */
+
 use yii\helpers\Html;
 ?>
 <p>Вы ввели следующую информацию: </p>
