@@ -12,6 +12,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
+<!--е) В форме вьюхи task/ _form.php удалить все поля кроме title и description.-->
+<!--ж) Проверить как работает процесс создания - создать несколько задач.-->
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>

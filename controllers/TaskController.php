@@ -45,13 +45,18 @@ class TaskController extends Controller
      * Lists all Task models.
      * @return mixed
      */
-    public function actionIndex()
+
+    // б) В TaskController cделать экшен my, при создании датапровайдера добавив к $query созданный в пункте
+    // "а" метод byCreator($userId) и подставив вместо $userId Id текущего юзера.
+    public function actionMy()
     {
+        $query = Task::find()->byCreator(Yii::$app->user->id);
+
         $dataProvider = new ActiveDataProvider([
-            'query' => Task::find(),
+            'query' => $query,
         ]);
 
-        return $this->render('index', [
+        return $this->render('my', [
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -74,12 +79,15 @@ class TaskController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
+    // д) В методе actionCreate добавить флэш сообщение об успешном создании и поменять редирект после создания
+    // на созданный список своих задач.
     public function actionCreate()
     {
         $model = new Task();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('warning', 'Задача добавлена!');
+            return $this->redirect(['my', 'id' => $model->id]);
         }
 
         return $this->render('create', [
@@ -109,7 +117,7 @@ class TaskController extends Controller
 
     /**
      * Deletes an existing Task model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
+     * If deletion is successful, the browser will be redirected to the 'my' page.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -118,7 +126,7 @@ class TaskController extends Controller
     {
         $this->findModel($id)->delete();
 
-        return $this->redirect(['index']);
+        return $this->redirect(['my']);
     }
 
     /**
