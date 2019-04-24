@@ -97,9 +97,9 @@ CREATE TABLE IF NOT EXISTS `task` (
   KEY `fx_task_user2` (`updater_id`),
   CONSTRAINT `fx_task_user1` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fx_task_user2` FOREIGN KEY (`updater_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.task: ~5 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.task: ~6 rows (приблизительно)
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
 INSERT INTO `task` (`id`, `title`, `description`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
 	(8, 'Title_1', 'Description_1', 9, 9, 1555874045, 1555874045),
@@ -107,7 +107,12 @@ INSERT INTO `task` (`id`, `title`, `description`, `creator_id`, `updater_id`, `c
 	(10, 'Title_3', 'Description_3', 10, 10, 1555874143, 1555874143),
 	(11, 'Title_4', 'Description_4', 11, 11, 1555874172, 1555874172),
 	(12, 'Title_5', 'Description_5', 12, 12, 1555874202, 1555874202),
-	(13, 'Title_6', 'Description_6', 13, 7, 1555874249, 1555874898);
+	(13, 'Title_6', 'Description_6', 13, 7, 1555874249, 1555874898),
+	(14, 'Title_7', 'Description_7', 10, 10, 1556127172, 1556127172),
+	(15, 'Title_8', 'Description_8', 14, 14, 1556129911, 1556129911),
+	(16, 'Title_9', 'Description_9', 14, 14, 1556129927, 1556129927),
+	(17, 'Title_10', 'Description_10', 15, 15, 1556129973, 1556129973),
+	(18, 'Title_11', 'Description_11', 15, 15, 1556130237, 1556130237);
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 
 -- Дамп структуры для таблица yii2basic.task_user
@@ -120,14 +125,17 @@ CREATE TABLE IF NOT EXISTS `task_user` (
   KEY `fx_taskuser_task` (`task_id`),
   CONSTRAINT `fx_taskuser_task` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`),
   CONSTRAINT `fx_taskuser_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.task_user: ~7 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.task_user: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `task_user` DISABLE KEYS */;
 INSERT INTO `task_user` (`id`, `task_id`, `user_id`) VALUES
 	(17, 8, 9),
 	(18, 9, 7),
-	(19, 10, 11);
+	(19, 10, 11),
+	(20, 10, 7),
+	(21, 9, 13),
+	(22, 17, 9);
 /*!40000 ALTER TABLE `task_user` ENABLE KEYS */;
 
 -- Дамп структуры для таблица yii2basic.user
@@ -143,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.user: ~7 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.user: ~8 rows (приблизительно)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `password_hash`, `auth_key`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
 	(7, 'boris', '$2y$13$vSSREEBfHmwSLAma3ZOvaelV4RNTDcqvu8FWN9tlqoIwTjRM/pxoS', 'NnMmRg3kyravM4CCP39lSVjCyJL_ZTeO', 1, NULL, 1555871247, 1555871247),
