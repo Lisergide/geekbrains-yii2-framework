@@ -97,22 +97,17 @@ CREATE TABLE IF NOT EXISTS `task` (
   KEY `fx_task_user2` (`updater_id`),
   CONSTRAINT `fx_task_user1` FOREIGN KEY (`creator_id`) REFERENCES `user` (`id`),
   CONSTRAINT `fx_task_user2` FOREIGN KEY (`updater_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.task: ~6 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.task: ~2 rows (приблизительно)
 /*!40000 ALTER TABLE `task` DISABLE KEYS */;
 INSERT INTO `task` (`id`, `title`, `description`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
-	(8, 'Title_1', 'Description_1', 9, 9, 1555874045, 1555874045),
-	(9, 'Title_2', 'Description_2', 7, 7, 1555874079, 1555874079),
-	(10, 'Title_3', 'Description_3', 10, 10, 1555874143, 1555874143),
-	(11, 'Title_4', 'Description_4', 11, 11, 1555874172, 1555874172),
-	(12, 'Title_5', 'Description_5', 12, 12, 1555874202, 1555874202),
-	(13, 'Title_6', 'Description_6', 13, 7, 1555874249, 1555874898),
-	(14, 'Title_7', 'Description_7', 10, 10, 1556127172, 1556127172),
-	(15, 'Title_8', 'Description_8', 14, 14, 1556129911, 1556129911),
-	(16, 'Title_9', 'Description_9', 14, 14, 1556129927, 1556129927),
-	(17, 'Title_10', 'Description_10', 15, 15, 1556129973, 1556129973),
-	(18, 'Title_11', 'Description_11', 15, 15, 1556130237, 1556130237);
+	(1, 'Title_1', 'Description_1', 1, NULL, 1555271689, NULL),
+	(2, 'Title_2', 'Description_2', 2, NULL, 1555271689, NULL),
+	(3, 'Title_3', 'Description_3', 3, NULL, 1555271689, NULL),
+	(4, 'Title_4', 'Description_4', 4, NULL, 1555534288, NULL),
+	(5, 'Title_5', 'Description_5', 5, NULL, 1555534536, NULL),
+	(6, 'Title_6', 'Description_6', 6, NULL, 1555534558, NULL);
 /*!40000 ALTER TABLE `task` ENABLE KEYS */;
 
 -- Дамп структуры для таблица yii2basic.task_user
@@ -125,17 +120,18 @@ CREATE TABLE IF NOT EXISTS `task_user` (
   KEY `fx_taskuser_task` (`task_id`),
   CONSTRAINT `fx_taskuser_task` FOREIGN KEY (`task_id`) REFERENCES `task` (`id`),
   CONSTRAINT `fx_taskuser_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.task_user: ~2 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.task_user: ~0 rows (приблизительно)
 /*!40000 ALTER TABLE `task_user` DISABLE KEYS */;
 INSERT INTO `task_user` (`id`, `task_id`, `user_id`) VALUES
-	(17, 8, 9),
-	(18, 9, 7),
-	(19, 10, 11),
-	(20, 10, 7),
-	(21, 9, 13),
-	(22, 17, 9);
+	(1, 1, 1),
+	(2, 2, 1),
+	(3, 3, 2),
+	(4, 3, 3),
+	(5, 4, 1),
+	(6, 4, 2),
+	(7, 4, 3);
 /*!40000 ALTER TABLE `task_user` ENABLE KEYS */;
 
 -- Дамп структуры для таблица yii2basic.user
@@ -149,19 +145,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
--- Дамп данных таблицы yii2basic.user: ~8 rows (приблизительно)
+-- Дамп данных таблицы yii2basic.user: ~4 rows (приблизительно)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `password_hash`, `auth_key`, `creator_id`, `updater_id`, `created_at`, `updated_at`) VALUES
-	(7, 'boris', '$2y$13$vSSREEBfHmwSLAma3ZOvaelV4RNTDcqvu8FWN9tlqoIwTjRM/pxoS', 'NnMmRg3kyravM4CCP39lSVjCyJL_ZTeO', 1, NULL, 1555871247, 1555871247),
-	(9, 'admin', '$2y$13$uAf9uIEIrNNPttIoMurOj.k8ATvxwiOlC7hWpblH4.RcsSbTbEpZ2', 'Jxjx6bXg-xEgQL7GKIRt4Peud7B182Pd', 1, NULL, 1555873832, 1555873832),
-	(10, 'demo', '$2y$13$IVoaVCfq/OyaWiwvLJ2IvuajW9MQ/I0xf.srqzd4nwTe3.UXBhwOu', 'B_JhuxMRYXuPYX9HP-Pg3oPiphxY25uu', 1, NULL, 1555873863, 1555873863),
-	(11, 'adam', '$2y$13$dJNkyzISM1JAyEMImcm9buzeh1TrIc0C3QJGUKKH6w.QpMaUzRz0i', 'lzjMirwNQjJkzJ-Ox8MA0N9KGRob4iIt', 1, NULL, 1555873900, 1555873900),
-	(12, 'eva', '$2y$13$Ld49R1DA3tYZTtsPaClHiORkivggcdht.nk73uwG1ZBsCVOYlIIMG', '1vPQ6O85Boti2EvCNDVP98Xs62706kZE', 1, NULL, 1555873913, 1555873913),
-	(13, 'yiiUser', '$2y$13$WmW3FiBj5MviX9Pg1K9YYOa2FSCYAX5B8ebvd/7F/uaSO547C/MdC', '116SwyHzNZ7z52194Nn_-bgoNFPm-aRT', 1, NULL, 1555873922, 1555873922),
-	(14, 'root', '$2y$13$3qVXg4RjFyzIwDzF5cQhFO4La7FMfwRhS/5matQqh5jyhixD8lBR6', 'v2OByYOjWaf_NbbozV_ABd_erEyxtFfd', 1, NULL, 1555874539, 1555874539),
-	(15, 'newuser', '$2y$13$4eJUFSLSuFCheJftkduJgOtHArGcjxYgpbwNHDmgP0Tyy3d7hgaJO', 'GSZ666czoD9caYr326Iu6qQXjsF6nTQs', 14, 14, 1555875102, 1555875102);
+	(1, 'admin', 'admin', '', 1, NULL, 1555271689, 1555271689),
+	(2, 'demo', 'demo', '', 2, NULL, 1555358089, NULL),
+	(3, 'adam', 'adam', '', 3, NULL, 1555444489, NULL),
+	(4, 'eva', 'eva', '', 4, NULL, 1555444489, NULL),
+	(5, 'john', 'john', '', 5, NULL, 1555530889, NULL),
+	(6, 'yiiUser', 'yiiUser', NULL, 6, NULL, 1555527962, NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
