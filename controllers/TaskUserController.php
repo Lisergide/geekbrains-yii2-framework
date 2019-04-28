@@ -97,7 +97,7 @@ class TaskUserController extends Controller {
 
         $model->unlinkAll(Task::RELATION_ACCESSED_USERS, true);
 
-        Yii::$app->session->setFlash('success', 'Unshare success');
+        Yii::$app->session->setFlash('success', 'Все доступы удалены!');
 
         return $this->redirect(['task/shared']);
     }

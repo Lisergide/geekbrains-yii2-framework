@@ -12,7 +12,7 @@ $config = [
     'bootstrap' => ['log'],
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'components' => [
         'request' => [
@@ -69,7 +69,7 @@ $config = [
         'test' => [
             'class' => TestService::class,
             'prop' => 'Задаем свой props в описании компонента test, которое выводится во views.',
-            ],
+        ],
 
     ],
     'params' => $params,

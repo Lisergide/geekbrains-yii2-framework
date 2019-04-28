@@ -23,24 +23,22 @@ use yii\behaviors\TimestampBehavior;
  * @property User[] $accessedUsers
  * @mixin TimestampBehavior
  */
-class Task extends \yii\db\ActiveRecord
-{
+class Task extends \yii\db\ActiveRecord {
     const RELATION_CREATOR = 'creator';
     const RELATION_TASK_USERS = 'taskUsers';
     const RELATION_ACCESSED_USERS = 'accessedUsers';
+
     /**
      * {@inheritdoc}
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'task';
     }
 
     /**
      * {@inheritdoc}
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['title', 'description'], 'required'],
             [['description'], 'string'],
@@ -54,7 +52,7 @@ class Task extends \yii\db\ActiveRecord
     public function behaviors() {
         return [
             // 1) Подключить в классах User и Task поведение TimestampBehavior
-          TimestampBehavior::class,
+            TimestampBehavior::class,
             // 7) Подключить поведение BlameableBehavior в классах User и Task.
             [
                 'class' => BlameableBehavior::class,
@@ -62,14 +60,12 @@ class Task extends \yii\db\ActiveRecord
                 'updatedByAttribute' => 'updater_id',
             ]
         ];
-}
-
+    }
 
     /**
      * {@inheritdoc}
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'title' => 'Title',
@@ -84,32 +80,28 @@ class Task extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getCreator()
-    {
+    public function getCreator() {
         return $this->hasOne(User::className(), ['id' => 'creator_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUpdater()
-    {
+    public function getUpdater() {
         return $this->hasOne(User::className(), ['id' => 'updater_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getTaskUsers()
-    {
+    public function getTaskUsers() {
         return $this->hasMany(TaskUser::className(), ['task_id' => 'id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getAccessedUsers()
-    {
+    public function getAccessedUsers() {
         return $this->hasMany(User::className(), ['id' => 'user_id'])
             ->via(self::RELATION_TASK_USERS);
     }
@@ -118,8 +110,7 @@ class Task extends \yii\db\ActiveRecord
      * {@inheritdoc}
      * @return \app\models\query\TaskQuery the active query used by this AR class.
      */
-    public static function find()
-    {
+    public static function find() {
         return new \app\models\query\TaskQuery(get_called_class());
     }
 }

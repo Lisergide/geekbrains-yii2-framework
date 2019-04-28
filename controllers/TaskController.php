@@ -14,14 +14,13 @@ use yii\filters\VerbFilter;
 /**
  * TaskController implements the CRUD actions for Task model.
  */
-class TaskController extends Controller
-{
+class TaskController extends Controller {
     public $defaultAction = 'my';
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             // 8) Ограничить с помощью AccessControl доступ только для авторизованных пользователей ко всем трем
             // созданным в прошлом ДЗ контроллерам.
@@ -50,8 +49,7 @@ class TaskController extends Controller
 
     // б) В TaskController cделать экшен my, при создании датапровайдера добавив к $query созданный в пункте
     // "а" метод byCreator($userId) и подставив вместо $userId Id текущего юзера.
-    public function actionMy()
-    {
+    public function actionMy() {
         $query = Task::find()->byCreator(Yii::$app->user->id);
 
         $dataProvider = new ActiveDataProvider([
@@ -69,8 +67,7 @@ class TaskController extends Controller
      */
     //а) Создаем экшен shared - список расшаренных задач, экшен отличается от my тем, что к query создаваемому для
     // датапровайдера присоединен с помощью inner join релейшен taskUsers.
-    public function actionShared()
-    {
+    public function actionShared() {
         $query = Task::find()
             ->byCreator(Yii::$app->user->id)
             ->innerJoinWith(Task::RELATION_TASK_USERS);
@@ -90,8 +87,7 @@ class TaskController extends Controller
      */
     // б) Создаем экшен accessed - список доступных чужих задач. Во вьюхе accessed выводим название, текст, имя автора
     // со ссылкой на его страницу просмотра и время создания.
-    public function actionAccessed()
-    {
+    public function actionAccessed() {
         $query = Task::find()
             ->innerJoinWith(Task::RELATION_TASK_USERS)
             ->where(['user_id' => Yii::$app->user->id]);
@@ -111,8 +107,7 @@ class TaskController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         $task = $this->findModel($id);
 
         if (!$task
@@ -147,8 +142,7 @@ class TaskController extends Controller
     // д) В методе actionCreate добавить флэш сообщение об успешном создании и поменять редирект после создания
     // на созданный список своих задач.
     // в) Добавляем флэш-сообщения после создания, изменения и удаления.
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Task();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -169,8 +163,7 @@ class TaskController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     // в) Добавляем флэш-сообщения после создания, изменения и удаления.
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if (!$model || $model->creator_id !== Yii::$app->user->id) {
@@ -195,8 +188,7 @@ class TaskController extends Controller
      * @throws NotFoundHttpException if the model cannot be found
      */
     // в) Добавляем флэш-сообщения после создания, изменения и удаления.
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $model = $this->findModel($id);
 
         if (!$model || $model->creator_id !== Yii::$app->user->id) {
@@ -217,8 +209,7 @@ class TaskController extends Controller
      * @return Task the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Task::findOne($id)) !== null) {
             return $model;
         }
