@@ -58,7 +58,10 @@ $config = [
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            // Урл страниц просмотра для всех контроллеров д.б. вида /task/1
             'rules' => [
+                '<controller:[\w-]+>s' => '<controller>/index',
+                '<controller:[\w-]+>/<id:\d+>' => '<controller>/view',
             ],
         ],
         // Настроить в web.php компонент test с ключом class равным \app\components\TestService::class,

@@ -36,6 +36,7 @@ AppAsset::register($this);
         ],
     ]);
     // В меню сайта убираем ссылки about-contact и делаем две ссылки на создание задачи и списка своих задач.
+    // Добавляем в меню ссылки на список расшаренных и доступных заметок.
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
@@ -49,8 +50,10 @@ AppAsset::register($this);
 //            ['label' => 'Country', 'url' => ['/country/index']],
 //            ['label' => 'User', 'url' => ['/user/index']],
 //            ['label' => 'UserTest', 'url' => ['/user/test']],
-            ['label' => 'Create Task', 'url' => ['/task/create']],
             ['label' => 'Task', 'url' => ['/task/my']],
+            ['label' => 'Create Task', 'url' => ['/task/create']],
+            ['label' => 'Shared Task', 'url' => ['/task/shared']],
+            ['label' => 'Accessed Task', 'url' => ['/task/accessed']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

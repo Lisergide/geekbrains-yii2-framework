@@ -33,40 +33,18 @@ class TaskUserController extends Controller {
                     ],
                 ],
             ],
+            // добавить экшен в VerbFilter для выполнения только по POST.
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['POST'],
+                    'delete-all' => ['POST']
                 ],
             ],
         ];
     }
 
-    /**
-     * Lists all TaskUser models.
-     * @return mixed
-     */
-    public function actionIndex() {
-        $dataProvider = new ActiveDataProvider([
-            'query' => TaskUser::find(),
-        ]);
-
-        return $this->render('index', [
-            'dataProvider' => $dataProvider,
-        ]);
-    }
-
-    /**
-     * Displays a single TaskUser model.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
-     */
-    public function actionView($id) {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
-    }
+    // б) Удаляем экшены index, update и view.
 
     /**
      * Creates a new TaskUser model.
@@ -80,7 +58,7 @@ class TaskUserController extends Controller {
         $model = Task::findOne($taskId);
         // в) Сделать проверку автора заметки при создании доступа.
         // г) Проверяем как работает создание доступа.
-        if ($model->creator_id !== Yii::$app->user->id || !$model) {
+        if (!$model || $model->creator_id !== Yii::$app->user->id) {
             throw new ForbiddenHttpException();
         }
         $model = new TaskUser();
@@ -104,22 +82,24 @@ class TaskUserController extends Controller {
     }
 
     /**
-     * Updates an existing TaskUser model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
+     * Creates a new TaskUser model.
+     * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id) {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+    // а) Сделать экшен deleteAll для удаления доступов к задаче.
+    // Сделать проверку на то, что удаляем доступы именно к своей задаче
+    // После удаления добавляем флэш-сообщение и редирект после на /task/shared.
+    public function actionDeleteAll($taskId) {
+        $model = Task::findOne($taskId);
+        if (!$model || $model->creator_id !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException();
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        $model->unlinkAll(Task::RELATION_ACCESSED_USERS, true);
+
+        Yii::$app->session->setFlash('success', 'Unshare success');
+
+        return $this->redirect(['task/shared']);
     }
 
     /**
@@ -129,10 +109,20 @@ class TaskUserController extends Controller {
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id) {
-        $this->findModel($id)->delete();
+    // 2) В экшене task-user/delete реализовать проверку удаления доступа именно к своей задаче
+    public function actionDelete($taskUserId) {
 
-        return $this->redirect(['index']);
+        $model = $this->findModel($taskUserId);
+
+        if ($model->getTask()->one()->creator_id !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException();
+        }
+
+        $model->delete();
+        // Добавить флэш сообщение после удаления.
+        Yii::$app->session->setFlash('danger', 'Пользователь удален из данной задачи!');
+
+        return $this->redirect(['task/view', 'id' => $model->getTask()->one()->id]);
     }
 
     /**

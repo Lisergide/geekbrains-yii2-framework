@@ -7,6 +7,7 @@ use app\models\Task;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use yii\web\ForbiddenHttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
@@ -15,6 +16,7 @@ use yii\filters\VerbFilter;
  */
 class TaskController extends Controller
 {
+    public $defaultAction = 'my';
     /**
      * {@inheritdoc}
      */
@@ -62,6 +64,48 @@ class TaskController extends Controller
     }
 
     /**
+     * Lists all Task models.
+     * @return mixed
+     */
+    //а) Создаем экшен shared - список расшаренных задач, экшен отличается от my тем, что к query создаваемому для
+    // датапровайдера присоединен с помощью inner join релейшен taskUsers.
+    public function actionShared()
+    {
+        $query = Task::find()
+            ->byCreator(Yii::$app->user->id)
+            ->innerJoinWith(Task::RELATION_TASK_USERS);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('shared', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
+     * Lists all Task models.
+     * @return mixed
+     */
+    // б) Создаем экшен accessed - список доступных чужих задач. Во вьюхе accessed выводим название, текст, имя автора
+    // со ссылкой на его страницу просмотра и время создания.
+    public function actionAccessed()
+    {
+        $query = Task::find()
+            ->innerJoinWith(Task::RELATION_TASK_USERS)
+            ->where(['user_id' => Yii::$app->user->id]);
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        return $this->render('accessed', [
+            'dataProvider' => $dataProvider,
+        ]);
+    }
+
+    /**
      * Displays a single Task model.
      * @param integer $id
      * @return mixed
@@ -69,9 +113,30 @@ class TaskController extends Controller
      */
     public function actionView($id)
     {
-        return $this->render('view', [
-            'model' => $this->findModel($id),
-        ]);
+        $task = $this->findModel($id);
+
+        if (!$task
+            || $task->creator_id !== Yii::$app->user->id
+            && !in_array(Yii::$app->user->id, $task->getTaskUsers()->select('user_id')->column())) {
+            throw new ForbiddenHttpException();
+        }
+
+        if ($task->creator_id !== Yii::$app->user->id) {
+            return $this->render('view', [
+                'model' => $task,
+            ]);
+        } else {
+            $dataProvider = new ActiveDataProvider([
+                'query' => $task->getTaskUsers()
+            ]);
+
+            return $this->render('my-view', [
+                'model' => $task,
+                'dataProvider' => $dataProvider,
+            ]);
+        }
+
+
     }
 
     /**
@@ -81,13 +146,14 @@ class TaskController extends Controller
      */
     // д) В методе actionCreate добавить флэш сообщение об успешном создании и поменять редирект после создания
     // на созданный список своих задач.
+    // в) Добавляем флэш-сообщения после создания, изменения и удаления.
     public function actionCreate()
     {
         $model = new Task();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            Yii::$app->session->setFlash('warning', 'Задача добавлена!');
-            return $this->redirect(['my', 'id' => $model->id]);
+            Yii::$app->session->setFlash('success', 'Задача добавлена!');
+            return $this->redirect(['my']);
         }
 
         return $this->render('create', [
@@ -102,12 +168,18 @@ class TaskController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+    // в) Добавляем флэш-сообщения после создания, изменения и удаления.
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
 
+        if (!$model || $model->creator_id !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException();
+        }
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            Yii::$app->session->setFlash('warning', 'Задача обновлена!');
+            return $this->redirect(['my']);
         }
 
         return $this->render('update', [
@@ -122,9 +194,18 @@ class TaskController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
+    // в) Добавляем флэш-сообщения после создания, изменения и удаления.
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = $this->findModel($id);
+
+        if (!$model || $model->creator_id !== Yii::$app->user->id) {
+            throw new ForbiddenHttpException();
+        }
+
+        $model->delete();
+
+        Yii::$app->session->setFlash('danger', 'Задача удалена!');
 
         return $this->redirect(['my']);
     }
